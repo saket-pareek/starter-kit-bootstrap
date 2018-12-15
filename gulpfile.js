@@ -54,7 +54,7 @@ gulp.task('imageMin', () =>
 
 // Compile Sass, move to dist/css and inject into browser
 gulp.task('sass', function(){
-    gulp.src(['node_modules/bootstrap/scss/bootstrap.scss','src/scss/*.scss'])
+    gulp.src('src/scss/*.scss')
       .pipe(plumber())
       .pipe(sass({outputStyle: 'compressed'}))
       .pipe(gulp.dest('dist/css'))
@@ -66,7 +66,7 @@ gulp.task('serve', function(){
   browserSync.init({
     server: './dist'
   });
-  gulp.watch(['node_modules/bootstrap/scss/bootstrap.scss', 'src/scss/*.scss'], ['sass']);
+  gulp.watch('src/scss/*.scss', ['sass']);
   gulp.watch('src/js/*.js', ['concatJS']);
   gulp.watch('src/images/*', ['imageMin']);
   gulp.watch('src/*.html', ['copyHtml']);
