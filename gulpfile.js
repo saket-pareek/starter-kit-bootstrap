@@ -66,7 +66,7 @@ gulp.task('serve', function(){
   browserSync.init({
     server: './dist'
   });
-  gulp.watch('src/scss/*.scss', ['sass']);
+  gulp.watch('src/scss/**/*.scss', ['sass']);
   gulp.watch('src/js/*.js', ['concatJS']);
   gulp.watch('src/images/*', ['imageMin']);
   gulp.watch('src/*.html', ['copyHtml']);
