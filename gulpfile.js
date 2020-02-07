@@ -1,7 +1,7 @@
 const gulp = require('gulp');
 const browserSync = require('browser-sync').create();
 const sass = require('gulp-sass');
-const imageMin = require('gulp-imagemin');
+const imageMin = require('gulp-imagemin'); // Not using it, that's why discolored text
 const plumber = require('gulp-plumber');
 const uglify = require('gulp-uglify'); // Not using it because it does not minify js file with knockout syntax in it
 const concat = require('gulp-concat'); // Not using it, that's why discolored text
@@ -34,7 +34,7 @@ gulp.task('copyJS', function() {
 gulp.task('copyImg', () =>
 	gulp
 		.src('src/img/*')
-		.pipe(imageMin())
+		// .pipe(imageMin())
 		.pipe(gulp.dest('dist/img'))
 );
 
@@ -42,7 +42,8 @@ gulp.task('copyImg', () =>
 gulp.task('sass', function() {
 	gulp.src('src/scss/*.scss')
 		.pipe(plumber())
-		.pipe(sass({ outputStyle: 'compressed' }))
+		// .pipe(sass({ outputStyle: 'compressed' }))
+		.pipe(sass())
 		.pipe(gulp.dest('dist/css'))
 		.pipe(browserSync.stream());
 });
