@@ -14,25 +14,10 @@ gulp.task('copyHtml', function() {
 });
 
 // Move js dependencies files to dist/js and inject into browser
-gulp.task('copyJS', function() {
-	gulp.src([
-		'node_modules/bootstrap/dist/js/bootstrap.min.js',
-		'node_modules/jquery/dist/jquery.min.js',
-		'node_modules/popper.js/dist/umd/popper.min.js',
-		'node_modules/knockout/build/output/knockout-latest.js'
-	])
+gulp.task('copyDependencies', function() {
+	gulp.src(['node_modules/jquery/dist/jquery.min.js'])
 		.pipe(gulp.dest('dist/js'))
 		.pipe(browserSync.stream());
-});
-
-// Move font-awesome css file to dist/css
-gulp.task('copyFa', function() {
-	gulp.src('node_modules/font-awesome/css/font-awesome.min.css').pipe(gulp.dest('dist/css'));
-});
-
-// Move font-awesome folder contents to dist/fonts
-gulp.task('copyFonts', function() {
-	gulp.src('node_modules/font-awesome/fonts/*').pipe(gulp.dest('dist/fonts'));
 });
 
 // Concatinating js files, move to dist/js and inject into browser
@@ -74,4 +59,4 @@ gulp.task('serve', function() {
 });
 
 // Create default task to run all tasks at once
-gulp.task('default', ['copyHtml', 'copyJS', 'copyFa', 'copyFonts', 'copyJS', 'copyImg', 'sass', 'serve']);
+gulp.task('default', ['copyHtml', 'copyDependencies', 'copyJS', 'copyImg', 'sass', 'serve']);
