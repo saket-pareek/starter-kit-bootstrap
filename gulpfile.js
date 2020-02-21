@@ -14,9 +14,16 @@ gulp.task('copyHtml', function() {
 });
 
 // Move js dependencies files to dist/js and inject into browser
-gulp.task('copyDependencies', function() {
-	gulp.src(['node_modules/jquery/dist/jquery.min.js'])
+gulp.task('copyJSDependencies', function() {
+	gulp.src(['node_modules/jquery/dist/jquery.min.js', 'node_modules/bootstrap/dist/js/bootstrap.min.js'])
 		.pipe(gulp.dest('dist/js'))
+		.pipe(browserSync.stream());
+});
+
+// Move js dependencies files to dist/js and inject into browser
+gulp.task('copyCSSDependencies', function() {
+	gulp.src(['node_modules/bootstrap/dist/css/bootstrap.min.css'])
+		.pipe(gulp.dest('dist/css'))
 		.pipe(browserSync.stream());
 });
 
@@ -60,4 +67,4 @@ gulp.task('serve', function() {
 });
 
 // Create default task to run all tasks at once
-gulp.task('default', ['copyHtml', 'copyDependencies', 'copyJS', 'copyImg', 'sass', 'serve']);
+gulp.task('default', ['copyHtml', 'copyJSDependencies', 'copyCSSDependencies', 'copyJS', 'copyImg', 'sass', 'serve']);
