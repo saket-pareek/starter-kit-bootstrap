@@ -26,7 +26,10 @@ gulp.task('copyJSDependencies', function() {
 
 // Move js dependencies files to dist/js and inject into browser
 gulp.task('copyCSSDependencies', function() {
-	gulp.src(['node_modules/bootstrap/dist/css/bootstrap.min.css'])
+	gulp.src([
+		'node_modules/bootstrap/dist/css/bootstrap.min.css',
+		'node_modules/@fortawesome/fontawesome-free/css/all.min.css'
+	])
 		.pipe(gulp.dest('dist/css'))
 		.pipe(browserSync.stream());
 });
