@@ -36,8 +36,6 @@ gulp.task('copyCSSDependencies', function() {
 gulp.task('copyJS', function() {
 	gulp.src('src/js/*.js')
 		.pipe(plumber())
-		// .pipe(concat('main.js'))
-		// .pipe(uglify())
 		.pipe(gulp.dest('dist/js'))
 		.pipe(browserSync.stream());
 });
