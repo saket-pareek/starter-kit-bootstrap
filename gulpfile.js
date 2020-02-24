@@ -3,8 +3,6 @@ const browserSync = require('browser-sync').create();
 const sass = require('gulp-sass');
 const imageMin = require('gulp-imagemin'); // Not using it, that's why discolored text
 const plumber = require('gulp-plumber');
-const uglify = require('gulp-uglify'); // Not using it because it does not minify js file with knockout syntax in it
-const concat = require('gulp-concat'); // Not using it, that's why discolored text
 
 // Copy Html files to dist/ and inject into browser
 gulp.task('copyHtml', function() {
